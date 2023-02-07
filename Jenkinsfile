@@ -8,7 +8,17 @@ pipeline {
         }
         stage("build"){
             steps{
-                   sh 'mvn clean install'
+                sh 'mvn clean install'
+            }
+        }
+        stage("workdir"){
+            steps{
+                sh 'echo "pwd"'
+            }
+        }
+        stage("docker image"){
+            steps{
+                sh 'sudo docker build -t shaik/tomcat:shaik . '
             }
         }  
     }
