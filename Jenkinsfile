@@ -18,7 +18,7 @@ pipeline {
         }
         stage("docker image"){
             steps{
-                sh 'sudo docker build -t shaik/tomcat:shaik . '
+                sh 'docker build -t shaik/tomcat:shaik . '
             }
         }  
     }
