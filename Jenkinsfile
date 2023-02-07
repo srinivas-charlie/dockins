@@ -2,12 +2,12 @@ pipeline {
    agent any 
     stages{ 
         stage{git checkout}{
-            step{
+            steps{
                    git credentialsId: 'github', url: 'https://github.com/srinivas-charlie/dockins.git'
              }
         }
         stage{build}{
-            step{
+            steps{
                    sh 'mvn clean install'
             }
         }  
