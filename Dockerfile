@@ -1,3 +1,3 @@
 FROM srinivascharlie/dev:tomcatwebapps
-COPY /home/ec2-user/dock-jens  /usr/local/tomcat/webapps
+COPY target/dock-jens.war  /usr/local/tomcat/webapps
 
