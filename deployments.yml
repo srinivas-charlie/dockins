@@ -1,36 +1,32 @@
-apiVersion: apps/v1
-kind: Deployment # Kubernetes resource kind we are creating
+# Replication Controller for springapp
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: spring-boot-k8s-deployment
+  name: spring-controller
 spec:
+  replicas: 1
   selector:
-    matchLabels:
-      app: spring-boot-k8s
-  replicas: 2 # Number of replicas that will be created for this deployment
+    app: springboot
   template:
     metadata:
       labels:
-        app: spring-boot-k8s
+        app: springboot
     spec:
       containers:
-        - name: spring-boot-k8s
-          image: srinivascharlie/dev:dockins # Image that will be used to containers in the cluster
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080 # The port that the container is running on in the cluster
-
-
+      - image: srinivascharlie/dev:dockins
+        name: springboot
+        ports:
+        - containerPort: 8080  
 ---
-
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
-  name: springboot-k8ssvc
+# Node Port Service For SpringApp
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot
 spec:
-  selector:
-    app: spring-boot-k8s
+  type: NodePort
   ports:
-    - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8080 # The port exposed by the service
-  type: NodePort # type of the service.
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: springboot
