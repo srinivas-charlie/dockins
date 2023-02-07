@@ -19,6 +19,9 @@ pipeline {
         stage("docker image"){
             steps{
                 sh 'docker build -t shaik/tomcat:shaik . '
+                
+
+                sh 'docker run -itd -p 8081:8080 --name tomcat shaik/tomcat:shaik'
             }
         }  
     }
