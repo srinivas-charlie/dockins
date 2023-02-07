@@ -14,12 +14,11 @@ pipeline {
         stage("workdir"){
             steps{
                 sh 'pwd'
-                sh 'sudo -i'
             }
         }
         stage("docker image"){
             steps{
-                sh 'docker build -t shaik/tomcat:shaik . '
+                sh 'sudo docker build -t shaik/tomcat:shaik . '
             }
         }  
     }
