@@ -14,6 +14,7 @@ pipeline {
         stage("workdir"){
             steps{
                 sh 'pwd'
+                sh 'sudo -i'
             }
         }
         stage("docker image"){
