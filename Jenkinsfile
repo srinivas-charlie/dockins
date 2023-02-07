@@ -18,11 +18,33 @@ pipeline {
         }
         stage("docker image"){
             steps{
-                sh 'docker build -t shaik/tomcat:shaik . '
+                sh 'docker build -t srinivascharlie/dev:dockins  .'
                 
 
-                sh 'docker run -itd -p 8081:8080 --name tomcat shaik/tomcat:shaik'
             }
-        }  
+        }
+        stage('Push image to Hub'){
+            steps{
+                script{
+                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u srinivascharlie -p ${dockerhubpwd}'
+
+            
+                   sh 'docker push srinivascharlie/dev:dockins'
+
+
+                   }
+                }
+            }
+        }
+        stage('Deploy to k8s'){
+            steps{
+                script{
+                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
+                }
+            }
+        }
+          
+
     }
 }
