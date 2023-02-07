@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mywebdeployment
+  name: tomcat-deployment
   labels:
-    app: myweb
+    app: tomcat
 spec:
-  replicas: 6
+  replicas: 3
   selector:
     matchLabels:
-      app: myweb
+      app: tomcat
   template:
     metadata:
       labels:
-        app: myweb
+        app: tomcat
     spec:
       containers:
-      - name: myweb
+      - name: tomcat
         image: srinivascharlie/dev:dockins
         ports:
         - containerPort: 8080
