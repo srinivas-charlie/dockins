@@ -28,6 +28,13 @@
     </dependency>
   </dependencies>
 
+  <distributionManagement>
+		 <snapshotRepository>
+		    <id>nexus</id>
+		    <url>http://localhost:8081/repository/nexusRepo/</url>
+		 </snapshotRepository>
+  	</distributionManagement>
+
   <build>
     <finalName>dock-jens</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
