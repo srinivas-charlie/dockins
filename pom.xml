@@ -30,10 +30,10 @@
 
   <distributionManagement>
 		 <snapshotRepository>
-		    <id>nexusRepo</id>
-		    <url>http://localhost:8081/repository/nexusRepo/</url>
+		    <id>charlie</id>
+		    <url>http://localhost:8081/repository/charlie/</url>
 		 </snapshotRepository>
-  	</distributionManagement>
+ </distributionManagement
 
   <build>
     <finalName>dock-jens</finalName>
