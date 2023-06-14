@@ -28,12 +28,17 @@
     </dependency>
   </dependencies>
 
-  <distributionManagement>
+   <distributionManagement>
 		 <snapshotRepository>
 		    <id>charlie</id>
 		    <url>http://localhost:8081/repository/charlie/</url>
 		 </snapshotRepository>
- </distributionManagement
+
+		<repository>
+		    <id>charlie</id>
+		    <url>http://localhost:8081/repository/charlie-releases/</url>
+		</repository>
+  	</distributionManagement>
 
   <build>
     <finalName>dock-jens</finalName>
